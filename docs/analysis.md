@@ -274,9 +274,11 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 
 Значение R = 185 МДж·мм·га⁻¹·ч⁻¹·год⁻¹ ожидаемо мало по сравнению с большинством мировых регионов:
 - Центральная Европа: ~722 (Panagos et al., 2015) — в 3.9× выше;
-- Средиземноморье: ~2800 (Ballabio et al., 2017) — в 15× выше;
-- Лёссовое плато Китая: ~1260 (Zhao et al., 2017) — в 6.8× выше;
-- Корея (Южная): ~4147 (Kim et al., 2012) — в 22× выше.
+- Азия и Ближний Восток: ~1487 (Panagos et al., 2017) — в 8.0× выше;
+- Мир (в среднем): ~2190 (Panagos et al., 2017) — в 11.8× выше;
+- Средиземноморье: ~2800 (Ballabio et al., 2017) — в 15.1× выше;
+- Африка: ~3053 (Panagos et al., 2017) — в 16.5× выше;
+- Южная Америка: ~5874 (Panagos et al., 2017) — в 31.7× выше.
 
 Это хорошо согласуется с принятой климатической зональностью: умеренно-континентальный климат Поволжья характеризуется относительно умеренными конвективными интенсивностями (сезонный Imax на уровне 10–25 мм/ч за 30 мин по IMERG), что принципиально отличается от интенсивных субтропических и тропических режимов.
 
@@ -354,5 +356,3 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 8. Панов В.И., Кузьменко Я.В., Голеусов П.В. (2020). Пространственное распределение эрозивности осадков в Европейской России. *Почвоведение*, (6), 718–728.
 9. Wischmeier, W.H., Smith, D.D. (1978). *Predicting rainfall erosion losses.* USDA Agriculture Handbook No. 537.
 10. Panagos, P. et al. (2017). Global rainfall erosivity assessment based on high-temporal resolution rainfall records. *Sci. Reports*, 7, 4175. https://doi.org/10.1038/s41598-017-04282-8
-11. Kim, S. et al. (2012). Temporal and spatial distributions of rainfall erosivity for flood season in South Korea. *J. Korean Soc. Hazard Mitigation*, for reference. [Среднее по 60 станциям, 1981–2010: ~4 147 MJ·мм·га⁻¹·ч⁻¹·год⁻¹.]
-12. Zhao, W. et al. (2017). Temporal and spatial variations of rainfall erosivity on the Loess Plateau, China (1961–2014). *Catena*, 156, 30–38.
