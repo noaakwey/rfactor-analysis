@@ -1,6 +1,10 @@
-# Data (large rasters)
+# Data (large rasters — игнорируем только TIF)
 data/
-output/
+output/**/*.tif
+output/**/*.tiff
+
+# Docs figures — включены в гит (не игнорируются)
+# docs/ -> tracked
 
 # Python
 __pycache__/

@@ -50,7 +50,7 @@ rfactor-analysis/
 Данные R-фактора находятся в каталоге с кириллическими путями. GDAL/rasterio требует обходного решения:
 
 ```powershell
-subst Z: "D:\Cache\Yandex.Disk\РНФ25-28\Осадки\rfactor_imerg\annual"
+subst Z: "Осадки\rfactor_imerg\annual"
 ```
 
 ### Запуск
