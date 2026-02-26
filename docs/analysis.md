@@ -258,7 +258,7 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 
 ![Сравнение с литературными данными](figures/fig13_lit_comparison.png)
 
-*Рис. 7. Сопоставление R-фактора данного исследования с опубликованными значениями для различных климатических регионов мира. Горизонтальная планка ошибок — диапазон значений из соответствующего источника.*
+*Рис. 7. Сопоставление R-фактора данного исследования с опубликованными значениями для различных климатических регионов мира. Планки ошибок: для литературы — опубликованный диапазон, для данного исследования — 1σ бюджет неопределённости. Источники: [6, 7, 8, 10, 11, 12] + собственные расчёты.*
 
 ![Сводная таблица характеристик](figures/fig14_summary_table.png)
 
@@ -273,9 +273,10 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 ### 4.2 Глобальный контекст
 
 Значение R = 185 МДж·мм·га⁻¹·ч⁻¹·год⁻¹ ожидаемо мало по сравнению с большинством мировых регионов:
-- Центральная Европа: ~500 (Panagos et al., 2015) — в 2.7× выше;
-- Средиземноморье: ~1200 — в 6.5× выше;
-- Корея: ~2500 — в 13.5× выше.
+- Центральная Европа: ~722 (Panagos et al., 2015) — в 3.9× выше;
+- Средиземноморье: ~2800 (Ballabio et al., 2017) — в 15× выше;
+- Лёссовое плато Китая: ~1260 (Zhao et al., 2017) — в 6.8× выше;
+- Корея (Южная): ~4147 (Kim et al., 2012) — в 22× выше.
 
 Это хорошо согласуется с принятой климатической зональностью: умеренно-континентальный климат Поволжья характеризуется относительно умеренными конвективными интенсивностями (сезонный Imax на уровне 10–25 мм/ч за 30 мин по IMERG), что принципиально отличается от интенсивных субтропических и тропических режимов.
 
@@ -297,7 +298,7 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 
 ### 5.1 Роль калибровки в точности R-фактора
 
-Без калибровки (IMERG v2) медианный |PBIAS| составлял 7.5%, причём ошибка была положительно коррелирована с интенсивностью событий (r = 0.23). Применение метода soft-QM + year-anchor (v5) снизило медианный |PBIAS| до 3.3% и практически обнулило корреляцию с интенсивностью (r = 0.04).
+Без калибровки (сырой IMERG) медианный |PBIAS| составлял 8.4%, причём ошибка была положительно коррелирована с интенсивностью событий (r = 0.23). Применение метода soft-QM + year-anchor (v5) снизило медианный |PBIAS| до 3.3% и практически обнулило корреляцию с интенсивностью (r = 0.04).
 
 Поскольку R-фактор квадратично зависит от пиковой интенсивности (через произведение E·I₃₀), даже 10% смещение в интенсивных событиях трансформируется в ~15–20% ошибку в R. Следовательно, **применение некалиброванного IMERG для расчёта R-фактора недопустимо** и может приводить к систематическому занижению эрозивного потенциала в 20–30%.
 
@@ -337,7 +338,7 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 
 5. **Долгосрочный тренд:** OLS = −1.14 МДж·мм·га⁻¹·ч⁻¹·год⁻² (p = 0.633) — статистически незначим. Менее 5% площади домена имеют значимые пиксельные тренды (p < 0.05).
 
-6. **Калибровка критична:** Применение soft-QM + year-anchor (v5) снизило медианный |PBIAS| с 7.5% до 3.3% и нейтрализовало смещение, связанное с интенсивностью событий. Без калибровки R-фактор был бы систематически занижен — величина этого смещения не квантифицирована ввиду отсутствия опорных данных.
+6. **Калибровка критична:** Применение soft-QM + year-anchor (v5) снизило медианный |PBIAS| с 8.4% (сырые данные) до 3.3% и нейтрализовало смещение, связанное с интенсивностью событий. Без калибровки R-фактор был бы систематически занижен — величина этого смещения не квантифицирована ввиду отсутствия опорных данных.
 
 ---
 
@@ -345,12 +346,13 @@ $$\sigma_{\text{total}} = \sqrt{\sigma_{\text{samp}}^2 + \sigma_{\text{calib}}^2
 
 1. Brown, L.C., Foster, G.R. (1987). Storm erosivity using idealized intensity distributions. *Trans. ASAE*, 30(2), 379–386.
 2. Foster, G.R. et al. (2003). *User's guide — RUSLE2*. USDA-ARS, Washington DC.
-3. Huffman, G.J. et al. (2023). GPM IMERG Final V07. GES DISC. https://doi.org/10.5067/GPM/IMERG/3B-HH/07
+3. Huffman, G.J. et al. (2023). GPM IMERG Final Run V07. GES DISC. https://doi.org/10.5067/GPM/IMERG/3B-HH/07
 4. IPCC (2021). *Climate Change 2021: The Physical Science Basis.* Cambridge Univ. Press.
 5. Ларионов Г.А. (1993). *Эрозия и дефляция почв.* МГУ, 200 с.
-6. Panagos, P. et al. (2015). The new assessment of soil loss by water erosion in Europe. *Env. Sci. Policy*, 54, 438–447.
+6. Panagos, P. et al. (2015). The new assessment of soil loss by water erosion in Europe. *Environ. Sci. Policy*, 54, 438–447.
 7. Ballabio, C. et al. (2017). Mapping monthly rainfall erosivity in Europe. *Sci. Total Environ.*, 579, 1298–1315.
 8. Панов В.И., Кузьменко Я.В., Голеусов П.В. (2020). Пространственное распределение эрозивности осадков в Европейской России. *Почвоведение*, (6), 718–728.
-9. Beguería, S. et al. (2015). SPEI revisited. *Int. J. Climatol.*, 34(10), 3001–3023.
-10. Wischmeier, W.H., Smith, D.D. (1978). *Predicting rainfall erosion losses.* USDA Agriculture Handbook No. 537.
-11. Xu, X. et al. (2022). Erosivity density and maximum rainfall in NW China. *Catena*, 209, 105836.
+9. Wischmeier, W.H., Smith, D.D. (1978). *Predicting rainfall erosion losses.* USDA Agriculture Handbook No. 537.
+10. Panagos, P. et al. (2017). Global rainfall erosivity assessment based on high-temporal resolution rainfall records. *Sci. Reports*, 7, 4175. https://doi.org/10.1038/s41598-017-04282-8
+11. Kim, S. et al. (2012). Temporal and spatial distributions of rainfall erosivity for flood season in South Korea. *J. Korean Soc. Hazard Mitigation*, for reference. [Среднее по 60 станциям, 1981–2010: ~4 147 MJ·мм·га⁻¹·ч⁻¹·год⁻¹.]
+12. Zhao, W. et al. (2017). Temporal and spatial variations of rainfall erosivity on the Loess Plateau, China (1961–2014). *Catena*, 156, 30–38.
