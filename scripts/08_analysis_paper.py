@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 """
 08_analysis_paper.py
-Generates all figures for the comprehensive R-factor analysis paper (k=0.082).
+Generates all figures for the comprehensive R-factor analysis paper (k=0.05, V2-IA).
 
 Output: docs/figures/  (fig07_* through fig14_*)
 """
@@ -26,7 +26,7 @@ DPI    = 220
 YEARS  = list(range(2001, 2025))
 NODATA = 0.0
 
-DIR_K082 = r"D:\Cache\Yandex.Disk\РНФ25-28\Осадки\rfactor_imerg_k082\annual"
+DIR_V2 = r"D:\Cache\Yandex.Disk\РНФ25-28\Осадки\rfactor_imerg_k05\annual"
 FNAME    = "R_imerg_{year}.tif"
 
 BLUE  = "#2166ac"
@@ -44,7 +44,7 @@ def load_annual_k082():
     stack = []
     profile = None
     for y in YEARS:
-        p = os.path.join(DIR_K082, FNAME.format(year=y))
+        p = os.path.join(DIR_V2, FNAME.format(year=y))
         with rasterio.open(p) as ds:
             band = ds.read(1).astype(np.float64)
             if profile is None:
@@ -69,7 +69,7 @@ def save(fig, name):
 
 
 # ===================================================================
-# FIG 07 — Annual small multiples (k=0.082)
+# FIG 07 — Annual small multiples (k=0.05, V2-IA)
 # ===================================================================
 def fig07_small_multiples(stack, profile):
     ext    = get_extent(profile)
@@ -94,16 +94,16 @@ def fig07_small_multiples(stack, profile):
             sp.set_linewidth(0.4)
 
     fig.colorbar(im, ax=axes, shrink=0.4, pad=0.01,
-                 label="R (k=0.082), МДж·мм·га⁻¹·ч⁻¹·год⁻¹",
+                 label="R (k=0.05, V2-IA), МДж·мм·га⁻¹·ч⁻¹·год⁻¹",
                  orientation="horizontal", aspect=40)
-    fig.suptitle("Годовые карты R-фактора (k = 0.082), 2001–2024\n"
+    fig.suptitle("Годовые карты R-фактора (k = 0.05, Intensity-Aware), 2001–2024\n"
                  "IMERG V07 (калиброванный), 0.1°",
                  fontsize=14, fontweight="bold", y=1.01)
     save(fig, "fig07_annual_multiples.png")
 
 
 # ===================================================================
-# FIG 08 — Mean map + PDF + CDF (k=0.082)
+# FIG 08 — Mean map + PDF + CDF (k=0.05, V2-IA)
 # ===================================================================
 def fig08_mean_pdf(stack, profile):
     with np.errstate(invalid="ignore"):
@@ -124,7 +124,7 @@ def fig08_mean_pdf(stack, profile):
     fig.colorbar(im, ax=ax, shrink=0.85, pad=0.02,
                  label="МДж·мм·га⁻¹·ч⁻¹·год⁻¹")
     ax.set_xlabel("Долгота, °E"); ax.set_ylabel("Широта, °N")
-    ax.set_title("Среднемноголетний R-фактор (2001–2024)\n$k = 0.082$ (RUSLE2)",
+    ax.set_title("Среднемноголетний R-фактор (2001–2024)\n$k = 0.05, Intensity-Aware$ (RUSLE2)",
                  fontsize=12, fontweight="bold")
     ax.grid(alpha=0.2, lw=0.5)
     ax.text(0.02, 0.02,
@@ -138,7 +138,7 @@ def fig08_mean_pdf(stack, profile):
     ax2.hist(vals, bins=40, color=RED, alpha=0.75, edgecolor="none", density=True)
     ax2.axvline(np.mean(vals), color="black", lw=1.5, ls="--", label=f"Mean={np.mean(vals):.0f}")
     ax2.axvline(np.median(vals), color=BLUE, lw=1.5, ls=":", label=f"Median={np.median(vals):.0f}")
-    ax2.set_xlabel("R-фактор, МДж·мм·га⁻¹·ч⁻¹·год⁻¹"); ax2.set_ylabel("Плотность")
+    ax2.set_xlabel("R-фактор (k=0.05, V2-IA), МДж·мм·га⁻¹·ч⁻¹·год⁻¹")
     ax2.set_title("Распределение значений\nсреднемноголетнего R", fontsize=11, fontweight="bold")
     ax2.legend(fontsize=9); ax2.grid(alpha=0.3)
 
@@ -152,7 +152,7 @@ def fig08_mean_pdf(stack, profile):
         ax3.axhline(p, color=GRAY, lw=0.8, ls=ls, alpha=0.6)
         ax3.axvline(v, color=GRAY, lw=0.8, ls=ls, alpha=0.6)
         ax3.text(v + 2, p + 1, f"P{p}={v:.0f}", fontsize=7, color=GRAY)
-    ax3.set_xlabel("R-фактор, МДж·мм·га⁻¹·ч⁻¹·год⁻¹"); ax3.set_ylabel("CDF, %")
+    ax3.set_xlabel("R-фактор (k=0.05, V2-IA), МДж·мм·га⁻¹·ч⁻¹·год⁻¹")
     ax3.set_title("Кумулятивная функция\nраспределения", fontsize=11, fontweight="bold")
     ax3.grid(alpha=0.3); ax3.set_ylim(0, 100)
 
@@ -202,7 +202,7 @@ def fig09_temporal(stack):
                      color=clr, arrowprops=dict(arrowstyle="-", color=clr, lw=0.7))
 
     ax1.set_ylabel("R-фактор, МДж·мм·га⁻¹·ч⁻¹·год⁻¹", fontsize=11)
-    ax1.set_title("Межгодовая динамика R-фактора RUSLE (k = 0.082)\n"
+    ax1.set_title("Межгодовая динамика R-фактора RUSLE (k = 0.05, Intensity-Aware)\n"
                   "IMERG V07 (калиброванный), 2001–2024",
                   fontsize=13, fontweight="bold")
     ax1.legend(fontsize=9, ncol=3, framealpha=0.9)
@@ -381,7 +381,7 @@ def fig13_lit_comparison(mean_r082):
         # label, mean, lo, hi, source, marker_style
         ("Татарстан\n(Ларионов 1993)",         115,  70,  160, "♦"),
         ("Евр. Россия, зона B\n(Панов et al. 2020)",  160, 100, 220, "♦"),
-        ("Данное иссл. (k=0.082)",             mean_r082, None, None, "★"),
+        ("Данное иссл. (k=0.05, V2-IA)",             mean_r082, None, None, "★"),
         ("Вост. Европа (ср.)\n(Ballabio et al. 2017)",  300, 150, 500, "○"),
         ("Центр. Европа\n(Panagos et al. 2015)",        500, 300, 800, "○"),
         ("Зап. Европа\n(Panagos et al. 2015)",          700, 300,1500, "○"),
@@ -483,7 +483,7 @@ def fig14_summary_table(means):
             if i % 2 == 0:
                 table[i+1, j].set_facecolor("#f0f4f8")
 
-    ax.set_title("Таблица 1. Сводные характеристики R-фактора RUSLE\nIMERG V07 (калиброванный), 2001–2024, k = 0.082",
+    ax.set_title("Таблица 1. Сводные характеристики R-фактора RUSLE\nIMERG V07 (калиброванный), 2001–2024, k = 0.05, Intensity-Aware",
                  fontsize=12, fontweight="bold", pad=12)
 
     save(fig, "fig14_summary_table.png")
@@ -493,7 +493,7 @@ def fig14_summary_table(means):
 # MAIN
 # ===================================================================
 def main():
-    print("Loading k=0.082 stack...")
+    print("Loading k=0.05, V2-IA stack...")
     stack, profile = load_annual_k082()
     means = domain_stat(stack, np.nanmean)
 

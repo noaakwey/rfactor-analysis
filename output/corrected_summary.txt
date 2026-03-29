@@ -1,0 +1,13 @@
+FIXED RUSLE2 rainfall erosivity analysis
+Period: 2023-12-01 00:30:00 to 2024-11-30 23:30:00
+Total precipitation raw [mm]: 357.20
+Total liquid precipitation (used): 357.20
+Detected erosive events: 9
+R [MJ mm ha^-1 h^-1]: 410.96
+
+Monthly R contribution:
+year  month
+2024  3          4.517863
+      5         13.781199
+      7        255.457346
+      8        137.199152
