@@ -1,0 +1,14 @@
+﻿metric,value
+v6_domain_mean_r,340.13310390252053
+v6_domain_median_r,337.838238398234
+v6_domain_p05_r,278.2535041093826
+v6_domain_p95_r,412.0956889470418
+v6_domain_cv_pct,36.94884776417865
+v6_pixel_cv_mean_pct,59.804375849866126
+v6_trend_slope_per_year,-5.728781444851304
+v6_trend_p_value,0.1328821564508637
+v6_trend_r2,0.0996728842788557
+v5_domain_mean_r,159.2058525105299
+v6_minus_v5_mean_pct,113.64359320900222
+v6_minus_v5_pixel_median_pct,110.38179401616749
+v6_minus_v5_pixel_p95_pct,172.97190644016908
